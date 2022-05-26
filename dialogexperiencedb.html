@@ -81,10 +81,11 @@
         var id = doc[google.picker.Document.ID];
         var url = doc[google.picker.Document.URL];
         var title = doc[google.picker.Document.NAME];
+        document.getElementById('preresult').innerHTML = ''
         document.getElementById('result').innerHTML =
             '<b>You chose:</b><br>Name: <a href="' + url + '">' + title +
             '</a><br>ID: ' + id +
-            '<br><br>You may now close this window';
+            '<br><br>You may now close this window or select another spreadsheet';
         google.script.run.storeExperienceDB(id);
       } else if (action == google.picker.Action.CANCEL) {
         document.getElementById('result').innerHTML = 'Picker canceled.';
@@ -104,6 +105,10 @@
 <body>
   <div>
     <button onclick="getOAuthToken()">Select a file</button>
+    <p id="preresult" style='display: <?=display?>'>
+      <b>Currently you have selected:</b><br>Name: <a href="https://docs.google.com/spreadsheets/d/<?=sheetid?>"><?=sheetname?></a><br>ID: <?=sheetid?><br>
+      <?=additionalnotes?>
+    </p>
     <p id="result"></p>
   </div>
   <script src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>

@@ -8,6 +8,7 @@ function getSkills(text) {
   if (twoletterplus) {
     skills = skills.concat(twoletterplus)
   }
+  skills = skills.map((skill) => skill.trim())
   skills = skills.filter((v, i, a) => a.indexOf(v) === i)
   return skills
 }

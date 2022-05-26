@@ -8,6 +8,8 @@ function isIdSpreadsheet(id) {
 };
 
 function spreadSheetToDB(jobSkills) {
+  var ui = DocumentApp.getUi();
+
   var db = {}
   var sheets = SpreadsheetApp.openById(getProperty('experiencedb')).getSheets()
   sheets.forEach((sheet) => {
@@ -15,6 +17,9 @@ function spreadSheetToDB(jobSkills) {
     var headers = sheet.getRange(1, 1, 1, sheet.getMaxColumns()).getValues()[0]
     var rows = sheet.getRange(2, 1, sheet.getMaxRows(), sheet.getMaxColumns()).getValues()
     var scoredRows = rows.map((row) => {
+      var mySkills = getSkills(row.join(' '))
+      // ui.alert(mySkills.length)
+      // ui.alert(row)
       return [getSkills(row.join(' ')).filter(value => jobSkills.includes(value)).length, ...row]
     })
     var sortedScoredRows = scoredRows.sort((a, b) => {

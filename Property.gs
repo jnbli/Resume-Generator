@@ -36,7 +36,8 @@ function deleteAllProperties() {
 }
 
 function test() {
-  let x = propertyExists('resumetemplate')
+  // let x = propertyExists('resumetemplate')
   // let x = PropertiesService.getUserProperties().g
-  Logger.log(x)
+  // Logger.log(x)
+  setProperty('experiencedb', 'abc')
 }
