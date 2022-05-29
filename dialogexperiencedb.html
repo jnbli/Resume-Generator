@@ -5,7 +5,7 @@
   <script>
     // IMPORTANT: Replace the value for DEVELOPER_KEY with the API key obtained
     // from the Google Developers Console.
-    var DEVELOPER_KEY = 'AIzaSyAa-MSQVMrmovhH9rz5khm2Jdstx1xg9ZQ';
+    var DEVELOPER_KEY = ''; // API Key Goes Here
     var DIALOG_DIMENSIONS = {width: 600, height: 425};
     var pickerApiLoaded = false;
 
@@ -27,7 +27,7 @@
      */
     function getOAuthToken() {
       google.script.run.withSuccessHandler(createPicker)
-          .withFailureHandler(showError).getOAuthToken();
+        .withFailureHandler(showError).getOAuthToken();
     }
 
     /**
@@ -81,7 +81,7 @@
         var id = doc[google.picker.Document.ID];
         var url = doc[google.picker.Document.URL];
         var title = doc[google.picker.Document.NAME];
-        document.getElementById('preresult').innerHTML = ''
+        document.getElementById('preresult').innerHTML = '';
         document.getElementById('result').innerHTML =
             '<b>You chose:</b><br>Name: <a href="' + url + '">' + title +
             '</a><br>ID: ' + id +

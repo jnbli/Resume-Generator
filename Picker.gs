@@ -4,30 +4,26 @@
  */
 function showPickerExperienceDB() {
   try {
-    // const html = HtmlService.createHtmlOutputFromFile('dialogexperiencedb.html')
-    //     .setWidth(600)
-    //     .setHeight(425)
-    //     .setSandboxMode(HtmlService.SandboxMode.IFRAME);
-    const htmlTemplate = HtmlService.createTemplateFromFile('dialogexperiencedb.html')
+    const htmlTemplate = HtmlService.createTemplateFromFile('dialogexperiencedb.html');
 
     if (propertyExists('experiencedb')) {
-      var experiencedbid = getProperty('experiencedb')
-      htmlTemplate.display = 'block'
-      htmlTemplate.sheetid = experiencedbid
+      var experiencedbid = getProperty('experiencedb');
+      htmlTemplate.display = 'block';
+      htmlTemplate.sheetid = experiencedbid;
       if (isIdSpreadsheet(experiencedbid)) {
-        htmlTemplate.sheetname = SpreadsheetApp.openById(experiencedbid).getName()
-        htmlTemplate.additionalnotes = ''
+        htmlTemplate.sheetname = SpreadsheetApp.openById(experiencedbid).getName();
+        htmlTemplate.additionalnotes = '';
       }
       else {
-        htmlTemplate.sheetname = ''
-        htmlTemplate.additionalnotes = 'And it appears the url is no longer valid'
+        htmlTemplate.sheetname = '';
+        htmlTemplate.additionalnotes = 'And it appears the url is no longer valid';
       }
     }
     else {
-      htmlTemplate.display = 'none'
-      htmlTemplate.sheetid = ''
-      htmlTemplate.sheetname = ''
-      htmlTemplate.additionalnotes = ''
+      htmlTemplate.display = 'none';
+      htmlTemplate.sheetid = '';
+      htmlTemplate.sheetname = '';
+      htmlTemplate.additionalnotes = '';
     }
 
     const html = htmlTemplate.evaluate()
@@ -35,7 +31,6 @@ function showPickerExperienceDB() {
         .setHeight(425)
         .setSandboxMode(HtmlService.SandboxMode.IFRAME);
     DocumentApp.getUi().showModalDialog(html, 'Select an ExperienceDB');
-    // loadMenu()
   } catch (e) {
     // TODO (Developer) - Handle exception
     Logger.log('Failed with error: %s', e.error);
@@ -63,6 +58,6 @@ function getOAuthToken() {
 }
 
 function storeExperienceDB(id) {
-  let userProperties = PropertiesService.getUserProperties()
-  userProperties.setProperty('experiencedb', id) // Updates stored value.
+  let userProperties = PropertiesService.getUserProperties();
+  userProperties.setProperty('experiencedb', id); // Updates stored value.
 }

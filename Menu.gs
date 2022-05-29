@@ -3,13 +3,13 @@
  * @return {CardService.Card} The card to show the user.
  */
 function onHomepage(e) {
-  var builder = CardService.newCardBuilder()
+  var builder = CardService.newCardBuilder();
 
-  var homeSection = CardService.newCardSection()
+  var homeSection = CardService.newCardSection();
   
   var selectExperienceDBButton = CardService.newTextButton()
     .setText('Select Experiences Database')
-    .setOnClickAction(CardService.newAction().setFunctionName('showPickerExperienceDB'))
+    .setOnClickAction(CardService.newAction().setFunctionName('showPickerExperienceDB'));
 
   var jobDescriptionInput = CardService.newTextInput()
     .setFieldName("jobDescriptionInput")
@@ -23,13 +23,12 @@ function onHomepage(e) {
   .setOnClickAction(
     CardService.newAction()
       .setFunctionName('generateResume')
-      // .setParameters({'jobDescription': jobDescriptionInput})
-  )
+  );
   
-  homeSection.addWidget(selectExperienceDBButton)
-  homeSection.addWidget(jobDescriptionInput)
-  homeSection.addWidget(generateResumeButton)
+  homeSection.addWidget(selectExperienceDBButton);
+  homeSection.addWidget(jobDescriptionInput);
+  homeSection.addWidget(generateResumeButton);
   
-  builder.addSection(homeSection)
-  return builder.build()
+  builder.addSection(homeSection);
+  return builder.build();
 }
