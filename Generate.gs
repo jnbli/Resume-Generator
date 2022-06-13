@@ -13,22 +13,17 @@ function generateResume(e) {
     
     var regexSkillPatterns = getRegexSkillsPatterns(regexSkillPatternStrings);
 
-    var jobSkills = getSkills2(jobDescription, regexSkillPatterns);
+    var jobSkills = getSkills(jobDescription, regexSkillPatterns);
 
-    // var jobSkills = getSkills(jobDescription);
-    var db = spreadSheetToDB(jobSkills);
+    var db = spreadSheetToDB(jobSkills, regexSkillPatterns);
 
-    // var substitutions = getSubstitutions();
-    var substitutions = getSubstitutions2();
+    var substitutions = getSubstitutions();
     makeSubstitutions(substitutions, db);
 
-    // var missingSkills = getMissingSkills(jobSkills);
-    // replaceFirst('{MISSING.SKILLS}', missingSkills.join(', '));
     replaceFirst("{JOB_SKILLS}", jobSkills.join(", "));
 
-    // var mySkills = getMySkills();
     var myDescription = getMyDescription();
-    var mySkills = getSkills2(myDescription, regexSkillPatterns);
+    var mySkills = getSkills(myDescription, regexSkillPatterns);
     replaceFirst("{MY_SKILLS}", mySkills.join(", "));
 
     var jobSkillsMinusMySkills = skillsDifference(jobSkills, mySkills);

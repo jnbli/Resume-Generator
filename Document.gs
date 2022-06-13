@@ -36,7 +36,7 @@ function makeSampleResumeTemplate() {
 
 
 // replaces the first occurrence of old
-function replaceFirst(old, replacement) {    
+function replaceFirst(old, replacement) {
   var body = DocumentApp.getActiveDocument().getBody();
   var found = body.findText(old);
   if (found) {
@@ -54,11 +54,9 @@ function makeSubstitutions(substitutions, db) {
     sheetlevel = fourgroup[1];
     headerlevel = fourgroup[2];
     rowlevel = fourgroup[3];
-    if (db[sheetlevel] && db[sheetlevel][headerlevel] && db[sheetlevel][headerlevel][rowlevel] ) {
+    if (db[sheetlevel] && db[sheetlevel][headerlevel] && db[sheetlevel][headerlevel][rowlevel]) {
       // Logger.log("replace " + original + " with " + db[sheetlevel][headerlevel][rowlevel]);
       replaceFirst(original, db[sheetlevel][headerlevel][rowlevel]);
     }
   })
 }
-
-

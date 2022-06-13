@@ -9,13 +9,13 @@ function onHomepage(e) {
   var step1Paragraph = CardService.newTextParagraph()
     .setText("Step 1: Create the current Google Doc into a resume template. To see an example, click Create Sample Template");
   var makeSampleResumeTemplateButton = CardService.newTextButton()
-  .setText('Create Sample Template')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setBackgroundColor("#4688F1")
-  .setOnClickAction(
-    CardService.newAction()
+    .setText('Create Sample Template')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setBackgroundColor("#4688F1")
+    .setOnClickAction(
+      CardService.newAction()
       .setFunctionName('makeSampleResumeTemplate')
-  );
+    );
   templateSection.addWidget(step1Paragraph);
   templateSection.addWidget(makeSampleResumeTemplateButton);
   builder.addSection(templateSection);
@@ -24,20 +24,20 @@ function onHomepage(e) {
   var step2Paragraph = CardService.newTextParagraph()
     .setText("Step 2: Select a Google Sheet containing your experiences to be used to fill out the resume template. To see an example, click Create Sample Sheet.");
   var makeSampleExperienceSpreadsheet = CardService.newTextButton()
-  .setText('Create Sample Sheet')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setBackgroundColor("#1D9C5B")
-  .setOnClickAction(
-    CardService.newAction()
+    .setText('Create Sample Sheet')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setBackgroundColor("#1D9C5B")
+    .setOnClickAction(
+      CardService.newAction()
       .setFunctionName('makeSampleExperienceSpreadsheet')
-  );
+    );
 
   var selectExistingExperienceSpreadsheet = CardService.newTextButton()
-  .setText('Select Existing Sheet')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setBackgroundColor("#1D9C5B")
-  .setOnClickAction(CardService.newAction().setFunctionName('showPickerExperienceDB'));
-  
+    .setText('Select Existing Sheet')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setBackgroundColor("#1D9C5B")
+    .setOnClickAction(CardService.newAction().setFunctionName('showPickerExperienceDB'));
+
   experienceSection.addWidget(step2Paragraph);
   experienceSection.addWidget(makeSampleExperienceSpreadsheet);
   experienceSection.addWidget(selectExistingExperienceSpreadsheet);
@@ -46,17 +46,16 @@ function onHomepage(e) {
   var jobDescriptionSection = CardService.newCardSection();
   var step3Paragraph = CardService.newTextParagraph()
     .setText("Step 3: Paste in a job description that will be used to tailor your resume. For an example, click Fill With Example Description and refresh the addon or reload the page.");
-  
+
   var fillWithExampleJobDescriptionButton = CardService.newTextButton()
-  .setText('Fill With Example Description')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setBackgroundColor("#484848")
-  .setOnClickAction(
-    CardService.newAction()
+    .setText('Fill With Example Description')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setBackgroundColor("#484848")
+    .setOnClickAction(
+      CardService.newAction()
       .setFunctionName('fillExampleJobDescription')
-      .setParameters({a: 'b'})
-  );
-  
+    );
+
   var jobDescriptionInputProperty = PropertiesService.getUserProperties().getProperty("jobDescriptionInput") ? PropertiesService.getUserProperties().getProperty("jobDescriptionInput") : "";
   var jobDescriptionInput = CardService.newTextInput()
     .setFieldName("jobDescriptionInput")
@@ -64,9 +63,8 @@ function onHomepage(e) {
     .setValue(htmlEntities(jobDescriptionInputProperty))
     .setMultiline(true)
     .setOnChangeAction(CardService.newAction()
-    .setFunctionName("handleJobDescriptionInputChange")
-    .setParameters({a: 'b'}))
-    .setHint("");
+      .setFunctionName("handleJobDescriptionInputChange")
+    )
   jobDescriptionSection.addWidget(step3Paragraph);
   jobDescriptionSection.addWidget(fillWithExampleJobDescriptionButton);
   jobDescriptionSection.addWidget(jobDescriptionInput);
@@ -81,29 +79,20 @@ function onHomepage(e) {
   var regexSkillsInput = CardService.newTextInput()
     .setFieldName("regexSkillsInput")
     .setTitle("Enter Regex Patterns")
-    // .setValue(PropertiesService.getUserProperties().getProperty("regexSkillsInput").toString())
     .setValue(htmlEntities(regexSkillsInputProperty))
-    // .setValue("/(?&lt;!(^|&#92;. |&#92;n))&#92;w?[A-Z]&#92;w+( [A-Z]&#92;w+)*/g<br/>/(?&lt;=^|&#92;W)[A-Z][&#92;+#]*(?=&#92;W|$)/g")
     .setMultiline(true)
-    // .setValue(`asdf
-    // asdfsadf
-    // asdf
-    // `)
-    // .setValue('a<br/>b')
     .setOnChangeAction(CardService.newAction()
-        .setFunctionName("handleRegexInputChange")
-        .setParameters({a: 'b'}))
-    .setHint("");
+      .setFunctionName("handleRegexInputChange")
+    );
 
   var fillWithExampleRegexButton = CardService.newTextButton()
-  .setText('Fill With Example Regex')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setBackgroundColor("#852536")
-  .setOnClickAction(
-    CardService.newAction()
+    .setText('Fill With Example Regex')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setBackgroundColor("#852536")
+    .setOnClickAction(
+      CardService.newAction()
       .setFunctionName('fillExampleRegex')
-      .setParameters({a: 'b'})
-  );
+    );
   skillMatchingSection.addWidget(step4Paragraph);
   skillMatchingSection.addWidget(fillWithExampleRegexButton);
   skillMatchingSection.addWidget(regexSkillsInput);
@@ -113,12 +102,12 @@ function onHomepage(e) {
   var step5Paragraph = CardService.newTextParagraph()
     .setText("Step 5: Generate the resume by clicking the below button");
   var generateResumeButton = CardService.newTextButton()
-  .setText('Generate Resume')
-  .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
-  .setOnClickAction(
-    CardService.newAction()
+    .setText('Generate Resume')
+    .setTextButtonStyle(CardService.TextButtonStyle.FILLED)
+    .setOnClickAction(
+      CardService.newAction()
       .setFunctionName('generateResume')
-  );
+    );
   generateResumeSection.addWidget(step5Paragraph);
   generateResumeSection.addWidget(generateResumeButton);
   builder.addSection(generateResumeSection);
@@ -142,18 +131,14 @@ function handleJobDescriptionInputChange(c) {
 }
 
 function fillExampleRegex(c) {
-  // DocumentApp.getUi().alert(JSON.stringify(c))
   PropertiesService.getUserProperties().setProperty("regexSkillsInput", "/(?&lt;!(^|&#92;. |&#92;n))[A-Z]&#92;w+( [A-Z]&#92;w+)*/g\n/(?&lt;=^|&#92;W)[A-Z][&#92;+#]*(?=&#92;W|$)/g");
 }
 
 function fillExampleJobDescription(c) {
   PropertiesService.getUserProperties().setProperty("jobDescriptionInput", `Minimum Qualifications:
-4+ years experience coding in higher-level languages (e.g. Python, C++, Java, Angular).
-4+ years experience in building, maintaining, and debugging production services/platforms such as cloud infrastructure, load balancers, relational databases, and messaging systems.
-4+ years experience with software development, frameworks and APIs.
-Bachelor's degree in Computer Science, Computer Engineering, relevant technical field, or equivalent practical experience.`)
+4+ years experience coding in higher-level languages (e.g. Python, C++, Java, Angular).`)
 }
 
 function htmlEntities(str) {
-  return str.replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace('\\','&#92;')
+  return str.replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace('\\', '&#92;')
 }

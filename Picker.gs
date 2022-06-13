@@ -13,13 +13,11 @@ function showPickerExperienceDB() {
       if (isIdSpreadsheet(experiencedbid)) {
         htmlTemplate.sheetname = SpreadsheetApp.openById(experiencedbid).getName();
         htmlTemplate.additionalnotes = '';
-      }
-      else {
+      } else {
         htmlTemplate.sheetname = '';
         htmlTemplate.additionalnotes = 'And it appears the url is no longer valid';
       }
-    }
-    else {
+    } else {
       htmlTemplate.display = 'none';
       htmlTemplate.sheetid = '';
       htmlTemplate.sheetname = '';
@@ -27,9 +25,9 @@ function showPickerExperienceDB() {
     }
 
     const html = htmlTemplate.evaluate()
-        .setWidth(600)
-        .setHeight(425)
-        .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+      .setWidth(600)
+      .setHeight(425)
+      .setSandboxMode(HtmlService.SandboxMode.IFRAME);
     DocumentApp.getUi().showModalDialog(html, 'Select an Experience Spreadsheet');
   } catch (e) {
     // TODO (Developer) - Handle exception
