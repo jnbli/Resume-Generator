@@ -30,7 +30,7 @@ function showPickerExperienceDB() {
         .setWidth(600)
         .setHeight(425)
         .setSandboxMode(HtmlService.SandboxMode.IFRAME);
-    DocumentApp.getUi().showModalDialog(html, 'Select an ExperienceDB');
+    DocumentApp.getUi().showModalDialog(html, 'Select an Experience Spreadsheet');
   } catch (e) {
     // TODO (Developer) - Handle exception
     Logger.log('Failed with error: %s', e.error);
