@@ -1,10 +1,10 @@
 # Resume-Generator
 
 ## Purpose
-To automatically generate a tailored resume to particular job description
+To automatically generate a tailored resume to a particular job description
 
 ## Installation
-The Google Docs Add-on can be installed by visiting Google Workspace Marketplace: https://workspace.google.com/marketplace/app/resume_generator/798441380188.
+The Google Docs Add-on can be installed by visiting Google Workspace Marketplace: https://workspace.google.com/marketplace/app/resume_generator/798441380188
 
 ## Usage
 To generate a resume, you must provide a
